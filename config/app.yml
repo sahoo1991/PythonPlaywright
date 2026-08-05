@@ -1,0 +1,8 @@
+defaults: &defaults
+  resolution:
+    mobile: {width: 390, height: 844}
+    tablet: {width: 768, height: 1024}
+    desktop: {width: 1920, height: 1080}
+opensource-demo:
+  <<: *defaults
+  host: https://opensource-demo.orangehrmlive.com
