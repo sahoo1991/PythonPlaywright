@@ -9,7 +9,7 @@ from playwright.sync_api import Playwright, sync_playwright, BrowserType, Browse
 from helpers.config import ConfigParser
 from helpers.constant import PROJECT_PATH
 
-pytest_plugins = ["fixtures.pages"]
+pytest_plugins = ["fixtures.pages", "fixtures.data"]
 
 
 def pytest_addoption(parser) -> None:
