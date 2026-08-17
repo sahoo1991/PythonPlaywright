@@ -1,10 +1,13 @@
+import allure
 from playwright.sync_api import expect
 
 from models.pages.home.home_page import HomePage
 
-
+@allure.suite("Home Page")
+@allure.sub_suite("Verify Home Page")
 class TestHomepage:
 
+    @allure.title("Verify Home Page")
     def test_verify_home_page(self, home_page: HomePage) -> None:
         home_page.open()
         expect(home_page.company_branding).to_be_visible()

@@ -1,6 +1,7 @@
 import os
 from typing import Generator
 
+import allure
 import pytest
 from _pytest.fixtures import FixtureRequest
 from dotenv import load_dotenv
@@ -19,6 +20,20 @@ def pytest_addoption(parser) -> None:
                      help="Browser resolution (desktop, mobile, tablet)")
     parser.addoption("--headless", required=False, action="store", type=bool, default=False,
                      help="Run tests in headed or headless mode (True/False)")
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item):
+    outcome = yield
+    report = outcome.get_result()
+    if report.when == "call" and report.failed:
+        page = item.funcargs.get("page", None)
+        if page:
+            try:
+                screenshot = page.screenshot(timeout=5000)
+                allure.attach(screenshot, name="failure-screenshot", attachment_type=allure.attachment_type.PNG)
+            except Exception as e:
+                print(f"Failed to take screenshot: {e}")
 
 
 @pytest.fixture(scope="session")
