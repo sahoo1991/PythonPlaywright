@@ -18,7 +18,7 @@ def pytest_addoption(parser) -> None:
                      help="Environment value to tweak the environment")
     parser.addoption("--resolution", required=False, action="store", default="desktop",
                      help="Browser resolution (desktop, mobile, tablet)")
-    parser.addoption("--headless", required=False, action="store", type=bool, default=False,
+    parser.addoption("--headless", required=False, action="store", type=bool, default=True,
                      help="Run tests in headed or headless mode (True/False)")
 
 
