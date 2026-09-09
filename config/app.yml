@@ -3,6 +3,11 @@ defaults: &defaults
     mobile: {width: 390, height: 844}
     tablet: {width: 768, height: 1024}
     desktop: {width: 1920, height: 1080}
+  api_base_url: https://api.openweathermap.org
 opensource-demo:
   <<: *defaults
   host: https://opensource-demo.orangehrmlive.com
+opensource-demo-stage:
+  <<: *defaults
+  host: https://opensource-demo.orangehrmlive.com
+  api_base_url: https://api.openweathermap.org
